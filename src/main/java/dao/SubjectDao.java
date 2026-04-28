@@ -12,7 +12,7 @@ import bean.Subject;
 public class SubjectDao extends Dao {
 
     public Subject get(String cd, School school) throws Exception {
-        String sql = "SELECT * FROM SUBJECT WHERE CD = ? AND SCHOOL_CD = ?";
+        String sql = "SELECT * FROM subject WHERE CD = ? AND school_cd = ?";
         try (Connection con = getConnection();
              PreparedStatement st = con.prepareStatement(sql)) {
             st.setString(1, cd);
@@ -31,7 +31,7 @@ public class SubjectDao extends Dao {
     }
 
     public List<Subject> filter(School school) throws Exception {
-        String sql = "SELECT * FROM SUBJECT WHERE SCHOOL_CD = ?";
+        String sql = "SELECT * FROM subject WHERE school_cd = ?";
         try (Connection con = getConnection();
              PreparedStatement st = con.prepareStatement(sql)) {
             st.setString(1, school.getCd());
@@ -54,9 +54,9 @@ public class SubjectDao extends Dao {
 
         String sql;
         if (existing != null) {
-            sql = "UPDATE SUBJECT SET NAME = ? WHERE CD = ? AND SCHOOL_CD = ?";
+            sql = "UPDATE subject SET NAME = ? WHERE CD = ? AND school_cd = ?";
         } else {
-            sql = "INSERT INTO SUBJECT (NAME, CD, SCHOOL_CD) VALUES (?, ?, ?)";
+            sql = "INSERT INTO subject (NAME, CD, school_cd) VALUES (?, ?, ?)";
         }
 
         try (Connection con = getConnection();
@@ -69,12 +69,13 @@ public class SubjectDao extends Dao {
     }
 
     public boolean delete(Subject subject) throws Exception {
-        String sql = "DELETE FROM SUBJECT WHERE CD = ? AND SCHOOL_CD = ?";
+        String sql = "DELETE FROM subject WHERE CD = ? AND school_cd = ?";
         try (Connection con = getConnection();
              PreparedStatement st = con.prepareStatement(sql)) {
             st.setString(1, subject.getCd());
             st.setString(2, subject.getSchool().getCd());
             return st.executeUpdate() > 0;
+           
         }
     }
 }

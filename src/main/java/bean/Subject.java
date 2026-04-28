@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Subject implements Serializable{
 	private String cd;
 	private String name;
-	private School school;
+	private School school_cd;
 	
 	public String getCd() {
 		return cd;
@@ -21,10 +21,11 @@ public class Subject implements Serializable{
 		this.name = name;
 	}
 	public School getSchool() {
-		return school;
+		return school_cd;
 	}
 	public void setSchool(School school) {
-		this.school = school;
+		this.school_cd = school;
 	}
+	
 	
 }
