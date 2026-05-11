@@ -24,17 +24,17 @@ public class SubjectCreateExecuteAction extends Action {
 
         Map<String, String> errors = new HashMap<>();
 
-        // バリデーション：科目コード未入力
+        // 科目コード未入力
         if (cd == null || cd.isEmpty()) {
             errors.put("cd", "このフィールドを入力してください。");
         }
 
-        // バリデーション：科目名未入力
+        // 科目名未入力
         if (name == null || name.isEmpty()) {
             errors.put("name", "このフィールドを入力してください。");
         }
 
-        // バリデーション：科目コード重複チェック
+        // 科目コード重複チェック
         if (cd != null && !cd.isEmpty()) {
             SubjectDao sDao = new SubjectDao();
             Subject existing = sDao.get(cd, teacher.getSchool());
