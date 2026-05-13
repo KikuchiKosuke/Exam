@@ -130,4 +130,14 @@ public class StudentDao extends Dao {
             return st.executeUpdate() > 0;
         }
     }
+    //deleteメソッド
+    public boolean delete(Student student) throws Exception {
+        String sql = "DELETE FROM student WHERE no = ?";
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement(sql)) {
+            st.setString(1, student.getNo());
+            return st.executeUpdate() > 0;
+        }
+    }
+
 }
