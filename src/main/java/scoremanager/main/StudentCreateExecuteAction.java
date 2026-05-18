@@ -46,12 +46,12 @@ public class StudentCreateExecuteAction extends Action {
             }
         }
 
-        // バリデーション：入学年度未選択
+        // 入学年度未選択
         if (entYearStr == null || entYearStr.equals("0")) {
             errors.put("ent_year", "入学年度を選択してください");
         }
 
-        // バリデーション：学生番号重複チェック
+        // 学生番号重複チェック
         if (no != null && !no.isEmpty()) {
             Student existing = sDao.get(no);
             if (existing != null) {
