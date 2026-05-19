@@ -3,12 +3,12 @@ package bean;
 import java.io.Serializable;
 
 public class TestScore implements Serializable {
-    private Student student;    // 学生番号 (STUDENT_NO)
-    private Subject subject;    // 科目コード (SUBJECT_CD)
-    private School school;      // 学校コード (SCHOOL_CD)
-    private int no;             // 回数 (NO)
-    private int point;          // 得点 (POINT)
-    private String classNum;    // クラス番号 (CLASS_NUM)
+    private Student student;    // 1学生番号 (STUDENT_NO)
+    private Subject subject;    // 2科目コード (SUBJECT_CD)
+    private School school;      // 3学校コード (SCHOOL_CD)
+    private int no;             // 4回数 (NO)
+    private int point;          // 5得点 (POINT)
+    private String classNum;    // 6クラス番号 (CLASS_NUM)
 
     public Student getStudent() { return student; }
     public void setStudent(Student student) { this.student = student; }

@@ -14,7 +14,7 @@ import bean.TestScore;
 public class TestDao extends Dao {
 
     /**
-     * 条件に合致する成績一覧を取得する
+     * 1条件に合致する成績一覧を取得する
      */
     public List<TestScore> filter(School school, int entYear, String classNum, String subjectCd, int num) throws Exception {
         List<TestScore> list = new ArrayList<>();

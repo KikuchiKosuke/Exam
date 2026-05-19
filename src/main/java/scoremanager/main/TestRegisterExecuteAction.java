@@ -58,11 +58,11 @@ public class TestRegisterExecuteAction extends Action {
                         ts.setClassNum(classNum);
                         targetScores.add(ts);
                     } else {
-                        // 💡 0〜100の範囲外の場合にエラーを設定
+                        //  0〜100の範囲外の場合にエラーを設定
                         errors.put(student.getNo(), "0〜100の範囲で入力してください");
                     }
                 } catch (NumberFormatException e) {
-                    // 💡 数字以外が入力された場合の考慮
+                    // 数字以外が入力された場合の考慮
                     errors.put(student.getNo(), "数値を入力してください");
                 }
             } else {

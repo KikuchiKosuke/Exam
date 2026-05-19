@@ -30,7 +30,7 @@ public class TestRegistAction extends Action {
         School school = teacher.getSchool();
         String schoolCd = school.getCd();
 
-        // 検索パラメータ取得
+        // 1検索パラメータ取得
         String entYearStr = req.getParameter("f1");
         String classNum = req.getParameter("f2");
         String subjectCd = req.getParameter("f3");
