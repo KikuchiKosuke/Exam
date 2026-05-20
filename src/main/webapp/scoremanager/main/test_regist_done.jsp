@@ -17,7 +17,8 @@
                 <div class="alert alert-success text-center">登録が完了しました</div>
             </div>
             <div class="mx-3">
-                <a href="Menu.action">戻る</a>
+            	<a href="TestRegist.action" class="me-3 d-inline-block">戻る</a>
+            	<a href="TestList.action" class="d-inline-block">成績参照</a>
             </div>
         </section>
     </c:param>

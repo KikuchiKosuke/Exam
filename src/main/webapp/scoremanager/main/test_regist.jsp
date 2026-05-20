@@ -6,8 +6,7 @@
     <c:param name="title">成績管理</c:param>
     <c:param name="content">
         <section class="me-4">
-            <h2 class="h3 mb-3">成績管理</h2>
-            
+ 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績登録</h2>            
             <%-- 検索条件エリア --%>
             <form action="TestRegist.action" method="get" class="bg-light p-3 rounded mb-4">
                 <div class="row g-3">

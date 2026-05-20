@@ -1,4 +1,4 @@
-ghjjj<%-- 成績参照JSP --%>
+<%-- 成績参照JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -72,6 +72,23 @@ ghjjj<%-- 成績参照JSP --%>
                     </div>
                     <div class="text-warning mb-2">${error_student}</div>
                 </form>
+
+                <%-- 利用方法案内メッセージ --%>
+                <div class="text-info mb-3">
+                    <c:choose>
+                        <%-- 修正箇所：科目コードが存在し、かつ「検索結果の成績リスト(tests)」が空ではない場合のみ表示 --%>
+                        <c:when test="${not empty subject_cd and subject_cd != '0' and not empty tests}">
+                            <c:forEach var="subject" items="${subjects}">
+                                <c:if test="${subject.cd == subject_cd}">
+                                    ${subject.name}（${subject.cd}）
+                                </c:if>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
+                        </c:otherwise>
+                    </c:choose>
+                </div>
 
                 <div class="text-warning">${error_common}</div>
             </div>

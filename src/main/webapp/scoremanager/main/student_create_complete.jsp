@@ -13,8 +13,9 @@
         <section class="me-4">
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">学生情報登録</h2>
             <div class="mx-3">
-                <p>学生情報を登録しました。</p>
-                <a href="StudentList.action">学生管理一覧に戻る</a>
+            <div class="alert alert-success text-center">学生情報を登録しました。</div>
+                    <a href="StudentCreate.action" class="me-3 d-inline-block">戻る</a>
+    				<a href="StudentList.action" class="d-inline-block">学生一覧</a>
             </div>
         </section>
     </c:param>

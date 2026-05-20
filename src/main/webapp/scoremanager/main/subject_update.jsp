@@ -18,6 +18,7 @@
                     <div class="mb-3">
                         <label class="form-label">科目コード</label>
                         <div>${subject.cd}</div>
+                        <div class="text-warning">${errors.get("cd")}</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="name-input">科目名</label>

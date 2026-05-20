@@ -24,25 +24,40 @@ public class SubjectUpdateExecuteAction extends Action {
 
         Map<String, String> errors = new HashMap<>();
 
-        //科目名未入力
+        SubjectDao sDao = new SubjectDao();
+        // データベースから現在の科目情報を取得
+        Subject subject = sDao.get(cd, teacher.getSchool());
+
+        // 【追加】対象の科目が他から削除されていた場合のチェック
+        if (subject == null) {
+            errors.put("cd", "科目が存在していません");
+            
+            // 画面再表示用に、リクエストパラメータを元にした臨時インスタンスを作成
+            subject = new Subject();
+            subject.setCd(cd);
+        }
+
+        // 科目名未入力
         if (name == null || name.isEmpty()) {
             errors.put("name", "このフィールドを入力してください。");
         }
 
         // エラーがあった場合は変更画面に戻る
         if (!errors.isEmpty()) {
-            SubjectDao sDao = new SubjectDao();
-            Subject subject = sDao.get(cd, teacher.getSchool());
-            subject.setName(name);
+            // 科目が存在していた場合は、入力された新しい科目名をセットして画面に戻す
+            if (subject != null && errors.get("cd") == null) {
+                subject.setName(name);
+            } else if (subject != null) {
+                // 科目が存在しない場合も、入力されていた名前を保持させる
+                subject.setName(name);
+            }
             request.setAttribute("errors", errors);
             request.setAttribute("subject", subject);
             request.getRequestDispatcher("subject_update.jsp").forward(request, response);
             return;
         }
 
-        // 科目情報を更新
-        SubjectDao sDao = new SubjectDao();
-        Subject subject = sDao.get(cd, teacher.getSchool());
+        // 科目情報を更新（正常系：subjectは必ず存在する）
         subject.setName(name);
 
         // DBに保存

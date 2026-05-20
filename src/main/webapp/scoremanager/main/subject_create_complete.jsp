@@ -13,8 +13,9 @@
         <section class="me-4">
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
             <div class="mx-3">
-                <p>科目情報を追加しました。</p>
-                <a href="SubjectList.action">科目管理一覧に戻る</a>
+             <div class="alert alert-success text-center">科目情報を追加しました。</div>
+                <a href="SubjectCreate.action" class="me-3 d-inline-block">戻る</a>
+    			<a href="SubjectList.action" class="d-inline-block">科目一覧</a>
             </div>
         </section>
     </c:param>

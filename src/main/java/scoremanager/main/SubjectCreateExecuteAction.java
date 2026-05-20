@@ -27,6 +27,13 @@ public class SubjectCreateExecuteAction extends Action {
         // 科目コード未入力
         if (cd == null || cd.isEmpty()) {
             errors.put("cd", "このフィールドを入力してください。");
+        } else {
+            // ★追加：科目コードが半角かつ3文字であるかのチェック
+            // 正規表現: ^[a-zA-Z0-9]{3}$ (半角英数字でちょうど3文字)
+            // もし数字のみ、あるいは英大文字のみなどルールがある場合は適宜変更してください
+            if (!cd.matches("^[a-zA-Z0-9]{3}$")) {
+                errors.put("cd", "科目コードは半角3文字にしてください");
+            }
         }
 
         // 科目名未入力
@@ -34,8 +41,8 @@ public class SubjectCreateExecuteAction extends Action {
             errors.put("name", "このフィールドを入力してください。");
         }
 
-        // 科目コード重複チェック
-        if (cd != null && !cd.isEmpty()) {
+        // 科目コード重複チェック（エラーがまだ無い場合のみ実行するのが安全です）
+        if (errors.get("cd") == null && cd != null && !cd.isEmpty()) {
             SubjectDao sDao = new SubjectDao();
             Subject existing = sDao.get(cd, teacher.getSchool());
             if (existing != null) {
